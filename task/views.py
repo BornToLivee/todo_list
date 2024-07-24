@@ -8,7 +8,6 @@ from task.models import Task, Tag
 
 class TaskListView(generic.ListView):
     model = Task
-    template_name = "task/task_list.html"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -42,7 +41,6 @@ def task_completion(request, pk):
 
 class TagsListView(generic.ListView):
     model = Tag
-    template_name = "task/tag_list.html"
 
 
 class TagsCreateView(generic.CreateView):
