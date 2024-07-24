@@ -1,27 +1,51 @@
 from django.urls import path
 
-from task.views import (
-    TaskListView,
-    TaskCreateView,
-    TaskUpdateView,
-    TaskDeleteView,
-    task_completion,
-    TagsListView,
-    TagsCreateView,
-    TagUpdateView,
-    TagDeleteView,
-)
+from task import views
+
 
 urlpatterns = [
-    path('', TaskListView.as_view(), name='task-list'),
-    path('create/', TaskCreateView.as_view(), name='task-create'),
-    path('update/<int:pk>', TaskUpdateView.as_view(), name='task-update'),
-    path('delete/<int:pk>', TaskDeleteView.as_view(), name='task-delete'),
-    path('<int:pk>/completion/', task_completion, name='task-completion'),
-    path('tags/', TagsListView.as_view(), name='tag-list'),
-    path('tags/create/', TagsCreateView.as_view(), name='tag-create'),
-    path('tags/update/<int:pk>', TagUpdateView.as_view(), name='tag-update'),
-    path('tags/delete/<int:pk>', TagDeleteView.as_view(), name='tag-delete'),
+    path(
+        "",
+        views.TaskListView.as_view(),
+        name="task-list"
+    ),
+    path(
+        "create/",
+        views.TaskCreateView.as_view(),
+        name="task-create"
+    ),
+    path(
+        "update/<int:pk>",
+        views.TaskUpdateView.as_view(),
+        name="task-update"
+    ),
+    path(
+        "delete/<int:pk>",
+        views.TaskDeleteView.as_view(),
+        name="task-delete"),
+    path(
+        "<int:pk>/completion/",
+        views.task_completion,
+        name="task-completion"
+    ),
+    path(
+        "tags/",
+        views.TagsListView.as_view(),
+        name="tag-list"),
+    path(
+        "tags/create/",
+        views.TagsCreateView.as_view(),
+        name="tag-create"
+    ),
+    path(
+        "tags/update/<int:pk>",
+        views.TagUpdateView.as_view(),
+        name="tag-update"),
+    path(
+        "tags/delete/<int:pk>",
+        views.TagDeleteView.as_view(),
+        name="tag-delete"
+    ),
 ]
 
 app_name = "task"
