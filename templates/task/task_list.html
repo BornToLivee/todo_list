@@ -7,13 +7,13 @@
   </h1>
   {% if task_list %}
     {% for task in task_list %}
-      <div style="margin-bottom: 10px; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
+      <div style="padding: 10px; border: 1px solid #ddd">
         <p><strong>{{ task.content }}</strong>
-          <span style="color: {% if task.is_completed %} green {% else %} red {% endif %};">
+          <span style="color: {% if task.is_completed %} green {% else %} red {% endif %}">
             {% if task.is_completed %} Done {% else %} Not done {% endif %}
           </span>
         </p>
-        <p>Created: {{ task.created_at }}{% if task.deadline %}. Deadline: {{ task.deadline }}{% endif %}</p>
+        <p>Created: {{ task.created_at }}{% if task.deadline %}. <span style="color: saddlebrown">Deadline: {{ task.deadline }}{% endif %}</span></p>
         <p>Tags:
           {% for tag in task.tag.all %}
             {{ tag.name }}{% if not forloop.last %}, {% endif %}
