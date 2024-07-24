@@ -2,7 +2,7 @@ from django.shortcuts import redirect, get_object_or_404
 from django.urls import reverse_lazy
 from django.views import generic
 
-from task.forms import TaskForm
+from task.forms import TaskForm, TagForm
 from task.models import Task, Tag
 
 
@@ -43,3 +43,9 @@ def task_completion(request, pk):
 class TagsListView(generic.ListView):
     model = Tag
     template_name = "task/tag_list.html"
+
+
+class TagsCreateView(generic.CreateView):
+    model = Tag
+    form_class = TagForm
+    success_url = reverse_lazy("task:tag-list")
